@@ -113,6 +113,23 @@ function renderMatrix() {
     chip.textContent = process.name;
     zoneEl.appendChild(chip);
   });
+
+  // Внутри renderMatrix(), после распределения процессов:
+for (var i = 1; i <= 4; i++) {
+  var zoneEl = document.getElementById('zone-' + i);
+  var count = zoneEl.querySelectorAll('.process-chip').length;
+  var h3 = zoneEl.querySelector('h3');
+
+  // Названия зон
+  var zoneNames = {
+    1: 'Срочные изменения',
+    2: 'Развитие',
+    3: 'Стандартизация',
+    4: 'Мониторинг'
+  };
+
+  h3.textContent = zoneNames[i] + ' (' + count + ')';
+}
 }
 
 function renderAll() {
@@ -135,23 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Первичная отрисовка
   renderAll();
 });
-
-// Внутри renderMatrix(), после распределения процессов:
-for (var i = 1; i <= 4; i++) {
-  var zoneEl = document.getElementById('zone-' + i);
-  var count = zoneEl.querySelectorAll('.process-chip').length;
-  var h3 = zoneEl.querySelector('h3');
-
-  // Названия зон
-  var zoneNames = {
-    1: 'Срочные изменения',
-    2: 'Развитие',
-    3: 'Стандартизация',
-    4: 'Мониторинг'
-  };
-
-  h3.textContent = zoneNames[i] + ' (' + count + ')';
-}
 
 // ========== ДОБАВЛЕНИЕ ПРОЦЕССА ==========
 
